@@ -1,0 +1,104 @@
+.authentication-card {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.authentication-card-container {
+    min-height: 100vh;
+}
+::ng-deep{
+    .authentication-card{
+        .mat-mdc-card-content {
+            padding: 10px 16px  !important;
+        }
+        .mdc-card__actions{
+            padding: 12px;
+            gap: 4px;
+        }
+         mat-error {
+             font-size: 10px;
+             color: #e91e63;
+         }
+     }
+}
+
+@keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+  .authentication-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: azure;
+  }
+  
+  .authentication-card {
+    max-width: 410px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 19px 34px rgba(1, 0, 0, 0.3);
+    overflow: hidden;
+      //   background: linear-gradient(to right, #ff7e5f, #feb47b);
+      animation: slideIn 0.5s ease-in-out; /* Add animation here */
+  
+    .mat-card-header {
+      background: #7b1fa2;
+      color: #ffffff;
+      text-align: center;
+      padding: 16px;
+      font-size: 1.2em;
+    }
+  
+    .mat-card-content {
+      text-align: center;
+      padding: 20px;
+  
+      form {
+        width: 100%;
+  
+        .mat-form-field {
+          width: 100%;
+  
+          input {
+            width: 100%;
+            color: #333333;
+          }
+        }
+      }
+    }
+  
+    .mat-card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0f0f0;
+      padding: 12px;
+  
+     
+      button {
+        font-size: 1em;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  
+        &:hover {
+          transform: scale(1.1) rotate(5deg);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+          background-color: #512da8;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  
+  

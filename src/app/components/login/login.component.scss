@@ -1,0 +1,101 @@
+.authentication-card {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.authentication-card-login-container {
+    min-height: 100vh;
+}
+
+
+@keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .authentication-card-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: azure;
+    ::ng-deep{
+        .authentication-card{
+            .mat-mdc-card-content {
+                padding: 10px 16px  !important;
+            }
+            .mdc-card__actions{
+                margin-top: 17px;   
+                gap: 4px;
+            }
+            mat-error {
+                font-size: 10px;
+                color: #ff2e63;
+            }
+         }
+    }
+      
+  
+    .authentication-card {
+      max-width: 410px;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 10px;
+    //   background: linear-gradient(to right, #ff7e5f, #feb47b);
+      box-shadow: 0 19px 34px rgba(1, 0, 0, 0.3);
+      animation: slideIn 0.5s ease-in-out; /* Add animation here */
+  
+      .mat-card-header {
+        text-align: center;
+        color: #ffffff;
+      }
+  
+      .mat-card-content {
+        text-align: center;
+        color: #ffffff;
+      }
+  
+      form {
+        width: 100%;
+  
+        .mat-form-field {
+          width: 100%;
+  
+          input {
+            width: 100%;
+            color: #333333;
+          }
+        }
+      }
+  
+      .mat-card-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+  
+        button {
+          margin-bottom: 10px;
+          background-color: #ffffff;
+          color: #ff2e63;
+          transition: background-color 0.3s, color 0.3s; /* Add transition here */
+  
+          &:hover {
+            background-color: #ff2e63;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
+  

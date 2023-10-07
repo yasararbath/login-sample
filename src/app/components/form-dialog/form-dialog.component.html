@@ -1,0 +1,36 @@
+<div mat-dialog-title>
+    <h1>{{data ? 'Edit': 'Add'}} Employee Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput type="text"  formControlName="name">
+                <mat-error *ngIf="empForm.get('firstName')?.hasError('required')">First Name is required</mat-error>
+            </mat-form-field>
+        </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+                <mat-error *ngIf="empForm.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>WorkLocation</mat-label>
+                <input matInput formControlName="workLocation">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Salary</mat-label>
+                <input matInput  type="number" formControlName="salary">
+            </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="action-btns">
+        <button style="margin: 10px;" mat-raised-button color="accent" type="submit">{{data ? 'Update': 'Save'}}</button>
+        <button mat-raised-button type="button" color="warn" [mat-dialog-close]="false">Cancel</button>
+    </div>
+</form>
