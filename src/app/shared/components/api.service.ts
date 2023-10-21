@@ -7,7 +7,7 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public login(email: string, password: string) {
     return this.http.post<any>(
@@ -34,34 +34,39 @@ export class ApiService {
     ).pipe(
       catchError((err) => {
 
-        return (err);   
+        return (err);
       })
     )
   }
-  public updateEmployee( id:string,
-    model:any
-  ){
+  public updateEmployee(id: string,
+    model: any
+  ) {
     return this.http.put<any>(
-      environment.apiUrl + '/update-employee/'+ id,
+      environment.apiUrl + '/employee/?id=' + id,
       model
     ).pipe(
       catchError((err) => {
 
-        return (err);   
+        return (err);
       })
     )
   }
+
+  public deleteEmployee(id: string) {
+    return this.http.delete<any>(environment.apiUrl + '/employee/?id=' + id)
+  }
+
   public saveEmployee(
-    model:any
+    model: any
   ) {
     return this.http.post<any>(
-      environment.apiUrl + '/save-employee',
+      environment.apiUrl + '/employee',
       model
-    ).pipe(
-      catchError((err) => {
-
-        return (err);   
-      })
     )
+  }
+
+  public getAllEmployee() {
+    return this.http.get<any>(
+      environment.apiUrl + '/employee')
   }
 }

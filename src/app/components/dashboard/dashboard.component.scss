@@ -1,11 +1,4 @@
 // /* dashboard.component.css */
-.sidenav-container {
-    height: 100%;
-  }
-  
-  .sidenav {
-    width: 250px;
-  }
   
   .logout-btn {
     width: 100%;
@@ -14,6 +7,32 @@
   .total-content{
     display: grid;
     gap: 10px;
+    grid-template-columns: auto;
   }
 
+  .list-table-wrapper{
+    margin-top: 15px;
+  }
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: 0.5s;   
+  }
+  .content-left{
+    margin-left: 0;
+    padding: 20px;  
+      transition: 0.5s;
+    
+  }
+  .new-employeer{
+    width: 20%;
+    margin-top: 20px;
+    background: grey !important;
+  }
+  
+  .content-container {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 25px;
+  }
   

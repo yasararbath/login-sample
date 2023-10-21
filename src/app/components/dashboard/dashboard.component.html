@@ -1,24 +1,10 @@
-<!-- <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav class="sidenav">
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/reports">Reports</a>
-      <a routerLink="/users">Users</a>
-      <button mat-raised-button class="logout-btn" (click)="logout()">Logout</button>
-    </mat-sidenav>
-    
-    <mat-sidenav-content class="content">
-      <app-login></app-login>>
-    </mat-sidenav-content>
-  </mat-sidenav-container> -->
-<div class="total-content">
-    <div>
-        <mat-card>
-            <mat-card-header>
-              <mat-card-title>Welcome </mat-card-title>
-            </mat-card-header>
-                <app-list-table></app-list-table>
-            
-        </mat-card>
-     </div>
-    <button mat-raised-button (click)="openFormDialog()">Create Employee</button>
+
+<app-side-nav (DashboardEmitter)="menuType($event)"></app-side-nav>
+<div  [ngClass]="menuTypeBoolean ? 'content' : 'content-left'">
+    <mat-card>
+      <button class="new-employeer" mat-raised-button (click)="openFormDialog()">Create Employee</button>
+      <div class="list-table-wrapper">
+        <app-list-table [allEmployeeData]="allEmployeeData"></app-list-table>
+      </div>
+    </mat-card>
 </div>

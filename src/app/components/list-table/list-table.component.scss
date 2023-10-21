@@ -1,0 +1,26 @@
+::ng-deep {
+    .table-wrapper {
+        table{
+            padding: 0px 20px 0px 20px;
+        }
+        .mat-mdc-form-field {
+            top: 10px;
+            position: relative;
+        }
+
+        .mdc-text-field {
+            height: 38px !important;
+        }
+
+        .mat-mdc-text-field-wrapper {
+            width: 65%;
+        }
+
+        .mat-mdc-select-trigger {
+            top: -7px;
+        }
+        .mdc-data-table__row:last-child .mat-mdc-cell{
+            width: 12%;
+        }
+    }
+}

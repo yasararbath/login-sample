@@ -1,0 +1,13 @@
+<div class="menu-total">
+    <mat-icon class="menu-icon" (click)="toggleDrawer()">menu</mat-icon> 
+   <div class="header"> Welcome</div>
+</div>
+<div class="overlay" [ngClass]="{'open': isOpen}">
+    <div class="drawer">
+      <div class="menu-totoal-warper"><button>Menu </button><mat-icon  class="menu-icon" (click)="toggleDrawer()">close</mat-icon></div>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/contact">Contact</a>
+      <a (click)="logout()">Logout</a>
+    </div>
+  </div>

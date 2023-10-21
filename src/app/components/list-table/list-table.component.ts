@@ -1,28 +1,61 @@
-import { Component } from '@angular/core';
-export interface PeriodicElement {
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { EmployeeService } from 'src/app/shared/components/employee.service';
+import { FormDialogComponent } from '../form-dialog/form-dialog.component';
+import { ToastrService } from 'ngx-toastr';
+export interface EmployeeModel {
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  designation: string;
+  email: string;
+  salary: number;
+  address: string;
+  worklocation: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+
 @Component({
   selector: 'app-list-table',
   templateUrl: './list-table.component.html',
   styleUrls: ['./list-table.component.scss']
 })
-export class ListTableComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+export class ListTableComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'designation', 'email', 'salary', 'address', 'worklocation', 'edit' ,'delete'];
+  @Input() allEmployeeData: any= [];
+  optionValue: string;
+  options: any = [
+    { value: 'edit', viewValue: 'Edit' },
+    { value: 'delete', viewValue: 'Delete' }
+  ];
+
+  constructor(public dialog: MatDialog, private empService: EmployeeService, private toasterService: ToastrService) {
+
+  }
+
+    ngOnInit(): void {
+  }
+
+  editEmployee(employeeData: any) {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      width: '400px', data: employeeData
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Form submitted:', result);
+      }
+    });
+  }
+
+  deleteEmployee(employeeData: any) {
+    this.empService.deleteEmployee(employeeData._id).subscribe({
+      next: (res: any) => {
+        if (res.status === 200) {
+          this.toasterService.success("Employee Data deleted successfuly")
+        } else {
+          this.toasterService.error("Error in Deleting Employee Data")
+        }
+      },
+      error: (err: any) => {
+        console.log(err)
+      },
+    });
+  }
 }

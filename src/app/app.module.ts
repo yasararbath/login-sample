@@ -15,6 +15,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 import { ListTableComponent } from './components/list-table/list-table.component';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     RegisterPageComponent,
     DashboardComponent,
     FormDialogComponent,
-    ListTableComponent
+    ListTableComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
